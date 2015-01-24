@@ -6,7 +6,7 @@ data<-MASSIST[,c(-1, -28)]
 # Define the overall UI
 shinyUI(
         
-        # Use a fluid Bootstrap layout
+        # Set the layout
         fluidPage(
                 
                 # Give the page a title
@@ -15,7 +15,7 @@ shinyUI(
                 # Generate a row with a sidebar
                 sidebarLayout(      
                         
-                        # Define the sidebar with one input
+                        # Define the sidebar with multiple inputs
                         sidebarPanel(
                                 p("This app generates a summary of uploaded survey data when each question is selected"),
                                 selectInput("Question", "Question:", 
@@ -35,7 +35,7 @@ shinyUI(
                                 helpText("Data collected in Fall 2014 (N =776)")
                         ,width=4),
                         
-                        # Create a spot for the barplot
+                        # Create a spot for the plots
                         mainPanel(
                                 plotOutput("plot"),
                                 plotOutput("grade")
