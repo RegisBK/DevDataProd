@@ -1,0 +1,59 @@
+---
+title       : Survey Question Analysis App
+subtitle    : Developing Data Products Course Project
+author      : RegisBK
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : standalone # {standalone, draft}
+knit        : slidify::knit2slides
+---
+<style>
+.title-slide {background-color: #FFF}
+</style>
+## Purpose
+<br>
+This app was designed to allow teachers at an organization to view the results of a survey conducted in their classes and download summary data tables for each question.  
+<br>
+
+App features:  
+* Generates graph of responses for each question separated by the final course grade of the respondent from raw data <br>
+<img src="Raw_data.jpg" style="width: 80%; height: 80%"/>
+* Users have the option to also view a table of responses corresponding to bar heights
+* Users can download summary table as a csv file 
+* Users can view the grade distribution for the entire class
+
+--- .class #id 
+
+## R Utilization
+
+* If a new data set is uploaded, the basic display and table code can remain the same
+* Calculations and plots are generated as the question selection is made
+
+<img src="Survey_Question_Analysis.jpg" style="width: 80%; height: 80%"/>
+
+---
+
+## Sample R Code
+
+Sample R code for generating table and total row using mtcars dataset similar to what is used to generate table in Survey App
+```{r}
+data(mtcars)
+df<- as.data.frame.matrix(t(table(mtcars$cyl, mtcars$am)))
+colnames(df)<-c("4 cyl","6 cyl","8 cyl")
+rownames(df)<-c("automatic", "manual")
+df["Total" ,] <-as.integer(colSums(df))
+print(df)
+```
+
+--- 
+
+## Summary
+
+* This app was developed for use by organizations that administer similar surveys over periods of time
+* New data can be uploaded and analyzed using same underlying code
+* Users can generate charts and tables dynamically to explore the data and draw conclusions
+* Users interested in manipulating data on their own can download summary csv files
+
